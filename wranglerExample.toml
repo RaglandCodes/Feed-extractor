@@ -1,0 +1,6 @@
+name = ""
+type = "webpack"
+account_id = ""
+workers_dev = true
+api_token = ""
+webpack_config = "webpack.config.js"

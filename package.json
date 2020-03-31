@@ -14,7 +14,7 @@
     "watch": "wrangler dev"
   },
   "author": "Ragland Asir",
-  "license": "MIT OR Apache-2.0",
+  "license": "MIT",
   "devDependencies": {
     "@cloudflare/workers-types": "^1.0.1",
     "@types/chai": "^4.2.11",

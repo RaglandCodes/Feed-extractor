@@ -1,5 +1,5 @@
 export async function handleRequest(request: Request): Promise<Response> {
-  console.log('TTTTTTTTTTTTTTT')
+  console.log('TTTTTTTTTT')
 
   console.log(`${JSON.stringify(request, null, 2)} <== request`)
 
