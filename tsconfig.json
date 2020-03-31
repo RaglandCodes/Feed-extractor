@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./build",
     "module": "commonjs",
     "target": "esnext",
     "lib": ["esnext", "webworker"],
@@ -13,10 +13,10 @@
   },
   "include": [
     "./src/*.ts",
-    "./test/*.ts",
-    "./src/**/*.ts",
-    "./test/**/*.ts",
-    "./node_modules/@cloudflare/workers-types/index.d.ts"
+    //"./test/*.ts",
+    "./src/**/*.ts"
+    //"./test/**/*.ts"
+    //"./node_modules/@cloudflare/workers-types/index.d.ts"
   ],
-  "exclude": ["node_modules/", "dist/"]
+  "exclude": ["node_modules/", "build/"]
 }

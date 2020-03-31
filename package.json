@@ -1,17 +1,17 @@
 {
-  "name": "rss-extracter",
+  "name": "feed-extracter",
   "version": "1.0.0",
-  "description": "Cloudflare worker TypeScript template",
+  "description": "Return data when given an RSS link",
   "main": "build/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "dev": "NODE_ENV=development npm run build",
     "format": "prettier --write '**/*.{ts,js,css,json,md}'",
     "test:clean": "rimraf ./transpiled/src ./transpiled/test",
     "test": "npm run test:clean && npm run transpile && mocha --require source-map-support/register --recursive transpiled/test",
     "transpile": "tsc --project ./test",
-    "deploy": "webpack && wrangler publish",
-    "watch": "webpack && wrangler dev"
+    "deploy": "webpack --mode=production && wrangler publish",
+    "watch": "wrangler dev"
   },
   "author": "Ragland Asir",
   "license": "MIT OR Apache-2.0",
