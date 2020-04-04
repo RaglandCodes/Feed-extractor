@@ -1,10 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
 //const mode = process.env.NODE_ENV || 'production'
 
 module.exports = (env, argv) => {
-  const mode = argv ? argv.mode : process.env.NODE_ENV
+  const mode = argv ? argv.mode : process.env.NODE_ENV;
 
   //console.log(`${JSON.stringify(argv, null, 2)} <== argv`)
   //console.log(`${process.env.NODE_ENV} <== process.env.NODE_ENV`)
@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
       ],
     },
     stats: mode === 'development' ? 'errors-warnings' : 'verbose',
-  }
+  };
 
-  return config
-}
+  return config;
+};

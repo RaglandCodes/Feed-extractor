@@ -11,9 +11,13 @@
     "test": "npm run test:clean && npm run transpile && mocha --require source-map-support/register --recursive transpiled/test",
     "transpile": "tsc --project ./test",
     "deploy": "webpack --mode=production && wrangler publish",
-    "watch": "wrangler dev"
+    "watch": "clear && wrangler dev"
   },
   "author": "Ragland Asir",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RaglandCodes/Feed-extractor"
+  },
   "license": "MIT",
   "devDependencies": {
     "@cloudflare/workers-types": "^1.0.1",
@@ -28,7 +32,11 @@
     "source-map-support": "^0.5.12",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
-    "webpack": "^4.35.3",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "@types/node": "^13.11.0",
+    "rss-parser": "^3.7.3"
   }
 }

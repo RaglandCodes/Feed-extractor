@@ -1,20 +1,53 @@
+interface FeedItem {
+  title: string;
+}
+
+let Parser = require('rss-parser');
+
+let parser = new Parser({
+  headers: {
+    'User-Agent': 'simple-worker',
+    'content-type': 'text/html; charset=UTF-8',
+  },
+});
+
+async function getFeedFromLink(feedLink: string) {
+  console.log(`${feedLink} <== link in fn`);
+  let feed: any;
+  try {
+    feed = await parser.parseURL(
+      'http://feeds.bbci.co.uk/news/technology/rss.xml',
+    );
+    console.log(`${JSON.stringify(feed, null, 2)} <== feed`);
+  } catch (err) {
+    console.log(`${err} <== err`);
+    return [];
+  }
+
+  return [];
+}
 export async function handleRequest(request: Request): Promise<Response> {
-  console.log('TTTTTTTTTT')
+  let requestArray: string[] = request.url.split('=');
+  if (requestArray.length !== 2) {
+    return new Response(JSON.stringify({ status: 'ERROR' }), {
+      headers: {
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers':
+          'Origin, X-Requested-With, Content-Type, Accept',
+      },
+    });
+  }
 
-  console.log(`${JSON.stringify(request, null, 2)} <== request`)
+  let link: string = requestArray[1];
 
-  console.log(`${request.url} <== request.url`)
-  let link = request.url.split('=')
-  let a: number = 788
-
-  console.log(`${link[1]} <== link22`)
-
-  return new Response(JSON.stringify({ OK: 'again OK 200' }), {
+  let feedItems = await getFeedFromLink(link);
+  return new Response(JSON.stringify({ status: 'OK', data: feedItems }), {
     headers: {
       'content-type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers':
         'Origin, X-Requested-With, Content-Type, Accept',
     },
-  })
+  });
 }
